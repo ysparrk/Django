@@ -1,0 +1,9 @@
+# 가상환경 생성
+python -m venv venv
+source venv/Scripts/acticate # 가상환경 활성화
+pip freeze > requirements.txt  # 가상환경 패키지 목록 저장
+
+# 장고 설치
+pip install diango==3.2.18
+django-admin startproject firstpjt  # 프로젝트 생성
+python manage.py runserver  # 서버 실행

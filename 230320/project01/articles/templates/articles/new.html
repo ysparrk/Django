@@ -1,0 +1,22 @@
+<!--templates/articles/new.html-->
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>글 작성</h1>
+    <hr>
+    <!--method POST로 바꾸고, csrf_token 추가-->
+    <form action="{% url 'articles:create' %}" method="POST">
+        {% csrf_token %}
+
+        <label for="title">제목 : </label>
+        <input type="text" name="title" id="title"><br>
+
+        <label for="content">내용 : </label>
+        <input type="text"  name="content" id="content"><br>
+        
+        <!--제출을 누르면 어떤 url로 보내지? -> action에 경로 지정-->
+        <input type="submit">
+    </form>
+    
+{% endblock content %}
