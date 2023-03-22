@@ -4,6 +4,7 @@ from django.db import models
 class Article(models.Model):
     title = models.CharField(max_length=30)  # CHAR는 max_length가 필요
     content = models.TextField()  # 길이 제한 없음
+    image = models.ImageField(blank=True, null=True)
     # 글을 쓸때, 우리는 생성일, 수정일이 자동적으로 넣어준다.
     created_at = models.DateTimeField(auto_now_add=True)  # 생성일, 더해질때 한번 더해준다 -> now, add
     updated_at = models.DateTimeField(auto_now=True)  # 수정일, 변경될때 그때의 시간, 날짜 -> now

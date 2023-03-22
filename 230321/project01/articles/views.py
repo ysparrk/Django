@@ -18,12 +18,12 @@ def detail(request, pk):
 # create
 def create(request):
     if request.method == 'POST':
-        form = ArticleForm(request.POST)
+        form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():  # 입력된 form이 유효하다면
             article = form.save()
             # form model이 연결되어 save하면 자동으로 data를 field에 넣고, 생성된 article 반환
             return redirect('articles:detail', article.pk)  # detail로 보낸다, 상세페이지 pk값 필요
-    
+
     else:
         form = ArticleForm()
 
@@ -40,7 +40,7 @@ def delete(request, pk):
 def update(request, pk):
     article = Article.objects.get(pk=pk)
     if request.method == 'POST':
-        form = ArticleForm(request.POST, instance=article)  # create가 아니라 기존의 있는 것에 update
+        form = ArticleForm(request.POST, request.FILES, instance=article)  # create가 아니라 기존의 있는 것에 update
         if form.is_valid():
             form.save()
             return redirect('articles:detail', pk=article.pk)        
@@ -48,5 +48,5 @@ def update(request, pk):
     else:
         form = ArticleForm(instance=article)
 
-    context = {'form': form}
+    context = {'form': form, 'article' : article}
     return render(request, 'articles/update.html', context)

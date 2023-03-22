@@ -13,8 +13,8 @@ class ArticleForm(forms.ModelForm):
         # Article model에 있는 field들 중에서 어떤 field를 대상으로 form을 만들 것인가
 
     # is_vaild 할때, django라는 키워드가 있는지 확인하고 싶다. -> 유효성 검사
-    def clean_title(self):
-        title = self.cleaned_data['title'] # 데이터 가져오기
-        if 'django' in title:
-            return True
+    # def clean_title(self):
+    #     title = self.cleaned_data['title'] # 데이터 가져오기
+    #     if 'django' in title:
+    #         return True
 
