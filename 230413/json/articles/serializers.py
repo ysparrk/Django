@@ -5,4 +5,5 @@ class ArticleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Article
-        fields = '__all__'
+        # fields = '__all__'
+        fields = ('id', 'title', 'content')

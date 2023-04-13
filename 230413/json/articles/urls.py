@@ -3,8 +3,12 @@ from . import views
 
 
 urlpatterns = [
+    # ========= Response ==========
     path('html/', views.article_html),
     path('json-1/', views.article_json_1),
     path('json-2/', views.article_json_2),
     path('json-3/', views.article_json_3),
+    # ========= DRF ================
+    path('articles/', views.article_list),
+    path('articles/<int:article_pk>/', views.article_detail),
 ]

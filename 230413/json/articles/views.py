@@ -44,3 +44,18 @@ def article_json_3(request):
     articles = Article.objects.all()
     serializer = ArticleSerializer(articles, many=True)
     return Response(serializer.data)
+
+# =================== DRF =================================
+# 1) GET - list
+@api_view(['GET'])
+def article_list(request):
+    articles = Article.objects.all() 
+    serializer = ArticleSerializer(articles, many=True)  # 여러개 넣을 것이다 -> many=True
+    return Response(serializer.data)  # ArticleSerializer의 인스턴스가 serializer이다. 이것의 data
+
+# 2) GET - detail
+@api_view(['GET'])
+def article_detail(request, article_pk):
+    article = Article.objects.get(pk=article_pk)
+    serializer = ArticleSerializer(article)
+    return Response(serializer.data)
